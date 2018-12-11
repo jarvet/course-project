@@ -8,11 +8,11 @@ from django.dispatch import receiver
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE)
     state = models.CharField(max_length=50, default="online")
-    last_lon = models.FloatField(blank=True)
-    last_lat = models.FloatField(blank=True)
+    last_lon = models.FloatField(blank=True, null=True)
+    last_lat = models.FloatField(blank=True, null=True)
 
     def __str__(self):
-        return self.user
+        return self.user.username
 
 
 
@@ -77,7 +77,7 @@ class Filter(models.Model):
     tname = models.ForeignKey(Tag, related_name="filters", on_delete=models.CASCADE, blank=True)
 
     def __str__(self):
-        return self.user, self.tname
+        return self.user.username, self.tname.tname
 
 
 class Area(models.Model):
