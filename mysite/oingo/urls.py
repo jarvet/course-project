@@ -5,4 +5,5 @@ from . import views
 app_name = 'oingo'
 urlpatterns = [
     path('hello', views.hello, name='hello'),
+    path('', views.login, name='login'),
 ]
