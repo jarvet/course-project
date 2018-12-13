@@ -7,7 +7,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.urls import reverse
 
-from oingo.models import Filter, Tag
+from oingo.models import Filter, Tag, Schedule, Location, Note
 
 
 @login_required
@@ -18,14 +18,13 @@ def hello(request):
 def login(request):
     if request.session.get('username', ''):
         return HttpResponseRedirect(reverse('oingo:index'))
-        # return HttpResponseRedirect(reverse('oingo:hello'))
     status = ''
     if request.POST:
         post = request.POST
         if 'login' in post:
-            email = post['email']
+            username = post['username']
             password = post['password']
-            unchecked_user = User.objects.get(email=email)
+            unchecked_user = User.objects.get(username=username)
             if unchecked_user:
                 user = auth.authenticate(username=unchecked_user.username, password=password)
                 if user is not None:
@@ -34,7 +33,6 @@ def login(request):
                         request.session['username'] = user.username
                         request.session['userid'] = user.id
                         return HttpResponseRedirect(reverse('oingo:index'))
-                        # return HttpResponseRedirect(reverse('oingo:hello'))
                     else:
                         status = 'not_active'
                 else:
@@ -47,7 +45,6 @@ def login(request):
 def register(request):
     if request.session.get('username', ''):
         return HttpResponseRedirect(reversed('oingo:index'))
-        # return HttpResponseRedirect(reverse('oingo:hello'))
     status = ''
     if request.POST:
         post = request.POST
@@ -123,8 +120,55 @@ def receive_friend_request(request, from_user, to_user):
 def show_friends(request, user_id):
     pass
 
-def publish_note(request):
-    pass
+
+@login_required
+def create_note(request):
+    username = request.session.get('username', '')
+    userid = request.session.get('userid', '')
+    user = User.objects.get(id=userid)
+    post = request.POST
+    if post:
+        tnames = post.get('tags', '')
+        tags = set()
+        for tname in tnames.split(';'):
+            if tname:
+                tag, created = Tag.objects.get_or_create(tname=tname)
+                if created:
+                    tag.save()
+            else:
+                tag = None
+            tags.add(tag)
+        schedule = Schedule(
+                start_time=post.get('start_time'),
+                end_time=post.get('end_time'),
+                repetition=post.get('repetition'),
+                from_date=post.get('from_date'),
+                to_date=post.get('to_date')
+            )
+        schedule.save()
+        location, _ = Location.objects.get_or_create(
+                lname=post.get('lname'),
+                lat=post.get('lat'),
+                lon=post.get('lon')
+            )
+        location.save()
+        note = Note(
+                note_content=post.get('note_content'),
+                visiable_group=post.get('visiable_group'),
+                allow_comment=True if post.get('allow_comment')=='allow' else False,
+                schedule=schedule,
+                author=user,
+                location=location,
+                visiable_radius=post.get('visiable_radius')            )
+        note.save()
+        note.tags.set(tags)
+        note.save()
+        return HttpResponseRedirect(reverse('oingo:index'))
+    content = {
+        'username': username,
+        'userid': userid
+    }
+    return render(request, "oingo/create_note.html", content)
 
 # show notes
 @login_required
