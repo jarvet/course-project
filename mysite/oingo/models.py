@@ -93,8 +93,10 @@ class Area(models.Model):
 
 
 class Friendship(models.Model):
-    user = models.ForeignKey(User, related_name="friend_list", on_delete=models.CASCADE)
-    firends = models.ManyToManyField(User)
+    user = models.ForeignKey(User, related_name="from_friendship", on_delete=models.CASCADE)
+    # friends = models.ManyToManyField(User)
+    friend = models.ForeignKey(User, related_name="to_friendship", on_delete=models.CASCADE)
+    is_request = models.BooleanField(default=True)
 
 
 class Comment(models.Model):

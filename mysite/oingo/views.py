@@ -7,7 +7,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.urls import reverse
 
-from oingo.models import Filter, Tag, Schedule, Location, Note
+from oingo.models import Filter, Tag, Schedule, Location, Note, Friendship
 
 
 @login_required
@@ -24,9 +24,9 @@ def login(request):
         if 'login' in post:
             username = post['username']
             password = post['password']
-            unchecked_user = User.objects.get(username=username)
+            unchecked_user = User.objects.filter(username=username)
             if unchecked_user:
-                user = auth.authenticate(username=unchecked_user.username, password=password)
+                user = auth.authenticate(username=username, password=password)
                 if user is not None:
                     if user.is_active:
                         auth.login(request, user)
@@ -110,36 +110,84 @@ def edit_profile(request):
     }
     return render(request, "oingo/edit_profile.html", content)
 
+@login_required
+def accept_friend_request(request, friend_id):
+    username = request.session.get('username', '')
+    userid = request.session.get('userid', '')
+    user = User.objects.get(id=userid)
+    friend = User.objects.get(id=friend_id)
+    friendship = Friendship.objects.get(user=friend_id, friend=userid)
+    friendship.is_request = False
+    friendship.save()
+    reverse_friendship = Friendship(
+            user=user,
+            friend=friend,
+            is_request=False
+        )
+    reverse_friendship.save()
+    return HttpResponseRedirect(reverse('oingo:show_friends'))
 
-def send_friend_request(request, from_user, to_user):
-    requestedBy = from_user
-    receivedBy = to_user
-    if request.method == 'POST':
+@login_required
+def reject_friend_request(request, friend_id):
+    username = request.session.get('username', '')
+    userid = request.session.get('userid', '')
+    user = User.objects.get(id=userid)
+    friend = User.objects.get(id=friend_id)
+    Friendship.objects.get(user=friend, friend=user).delete()
+    return HttpResponseRedirect(reverse('oingo:show_friends'))
 
-    form = FriendMgmtForm(request.POST)
-    if form.is_valid():
-        user = User.objects.get(id)
-        friend_manage = Friendship(user=request.user, friend= user)
-        friend_manage.save()
-        return HttpResponseRedirect('/myfriends/')
-    else:
-        form = PdfValidationForm()
-    user = request.user
-    profile = UserProfile.objects.get(user=user)
-    full_name = user.get_full_name()
-    email = user.email
-    friends = FriendMgmt.objects.filter(user=request.user)
-    return render(request, 'friends.html',{'form': form,
-                                      'full_name':full_name,
-                                      'email':email,
-                                      'friends':friends,})
+@login_required
+def remove_friend(request, friend_id):
+    username = request.session.get('username', '')
+    userid = request.session.get('userid', '')
+    user = User.objects.get(id=userid)
+    friend = User.objects.get(id=friend_id)
+    Friendship.objects.get(user=user, friend=friend).delete()
+    Friendship.objects.get(user=friend, friend=user).delete()
+    return HttpResponseRedirect(reverse('oingo:show_friends'))
 
-def receive_friend_request(request, from_user, to_user):
-    pass
 
-def show_friends(request, user_id):
-    pass
+@login_required
+def show_friends(request):
+    username = request.session.get('username', '')
+    userid = request.session.get('userid', '')
+    user = User.objects.get(id=userid)
+    friendships = Friendship.objects.filter(user=user, is_request=False).distinct()
+    requests = Friendship.objects.filter(friend=user, is_request=True).distinct()
+    friends = [ fs.friend for fs in friendships]
+    request_users = [rq.user for rq in requests]
+    content = {
+    'username': username,
+    'userid': userid,
+    'friends': friends,
+    'request_users': request_users,
+    }
+    post = request.POST
+    status = ''
+    if post:
+        friend_name = post.get('friend_name')
+        try:
+            friend = User.objects.get(username=friend_name)
+        except User.DoesNotExist:
+            friend = None
+            status = 'user_not_exist'
+        else:
+            if friend in friends:
+                status = 'already_friends'
+            elif friend in Friendship.objects.filter(user=user, is_request=True):
+                status = 'already_requested'
+            else:
+                new_friendship = Friendship(
+                        user=user,
+                        friend=friend
+                    )
+                new_friendship.save()
+                status = 'success'
+        content['status'] = status
+        # return HttpResponseRedirect(request.path_info)
+        return render(request, 'oingo/friend.html', content)
 
+    return render(request, 'oingo/friend.html', content)
 
 @login_required
 def create_note(request):

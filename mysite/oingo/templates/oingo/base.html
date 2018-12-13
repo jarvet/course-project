@@ -42,7 +42,7 @@
                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">welcome, {{username}}</a>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
 								<a class="dropdown-item" href="{% url 'oingo:profile' userid %}">Profile</a>
-								<a class="dropdown-item" href="#">Friends</a>
+								<a class="dropdown-item" href="{% url 'oingo:show_friends' %}">Friends</a>
                                 <a class="dropdown-item" href="{% url 'oingo:show_filter' %}">Filter</a>
 								<div class="dropdown-divider">
 								</div> <a class="dropdown-item" href="{% url 'oingo:logout' %}">Logout</a>
