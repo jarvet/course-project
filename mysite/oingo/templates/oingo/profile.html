@@ -1,0 +1,54 @@
+{% extends "oingo/base.html" %}
+
+
+{% block content %}
+    
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-6">
+            <div class="row">
+                <!--<div class="col-md-4">-->
+                <!--</div>-->
+                <!--<div class="col-md-8">-->
+                    <!--<p>-->
+                        <table>
+                            <!--<tr><td><strong>username:</strong></td><td>{{profile_username}}</td></tr>-->
+                            <!--<tr><td><strong>email:</strong></td><td>{{profile_email}}</td></tr>-->
+                            <!--<tr><td><strong>state:</strong></td><td>{{profile_state}}</td></tr>-->
+                            <!--<tr><td><strong>current longitude:</strong></td><td>{{profile_lon}}</td></tr>-->
+                            <!--<tr><td><strong>current latitude:</strong></td><td>{{profile_lat}}</td></tr>-->
+                            <tr><td><strong>username:</strong></td><td>{{profile_user.username}}</td></tr>
+                            <tr><td><strong>email:</strong></td><td>{{profile_user.email}}</td></tr>
+                            <tr><td><strong>state:</strong></td><td>{{profile_user.profile.state}}</td></tr>
+                            <tr><td><strong>current longitude:</strong></td><td>{{profile_user.profile.last_lon}}</td></tr>
+                            <tr><td><strong>current latitude:</strong></td><td>{{profile_user.profile.last_lat}}</td></tr>
+                        </table>
+                    <!--</p>-->
+                <!--</div>-->
+            </div>
+
+
+            <div class="row">
+                {% if profile_user.id == userid %}
+                <div class="col-md-4">
+                    <a href="{% url 'oingo:edit_profile' %}">
+                    <button class="btn btn-default btn-block" type="button">
+                        edit
+                    </button>
+                    </a>
+                </div>
+                {% else %}
+                <div class="col-md-2"></div>
+                {% endif %}
+                <div class="col-md-4">
+                    <button class="btn btn-default btn-block" type="button" onclick="javascript:history.back(-1)">
+                        back
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

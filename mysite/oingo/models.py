@@ -8,11 +8,11 @@ from django.dispatch import receiver
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE)
     state = models.CharField(max_length=50, default="online")
-    last_lon = models.FloatField(blank=True)
-    last_lat = models.FloatField(blank=True)
+    last_lon = models.FloatField(blank=True, null=True)
+    last_lat = models.FloatField(blank=True, null=True)
 
     def __str__(self):
-        return self.user
+        return self.user.username
 
 
 
@@ -64,20 +64,21 @@ class Note(models.Model):
 
 class Filter(models.Model):
     user = models.ForeignKey(User, related_name="filters", on_delete=models.CASCADE)
-    start_time = models.TimeField(blank=True)
-    end_time = models.TimeField(blank=True)
-    repetition = models.IntegerField(blank=True)
-    from_date = models.DateField(blank=True)
-    to_date = models.DateField(blank=True)
-    lname = models.CharField(max_length=50, blank=True)
-    lon = models.FloatField(blank=True)
-    lat = models.FloatField(blank=True)
-    radius = models.FloatField(blank=True)
-    state = models.CharField(max_length=50, blank=True)
-    tname = models.ForeignKey(Tag, related_name="filters", on_delete=models.CASCADE, blank=True)
+    start_time = models.TimeField(blank=True, null=True)
+    end_time = models.TimeField(blank=True, null=True)
+    repetition = models.IntegerField(blank=True, null=True)
+    from_date = models.DateField(blank=True, null=True)
+    to_date = models.DateField(blank=True, null=True)
+    lname = models.CharField(max_length=50, blank=True, null=True)
+    lon = models.FloatField(blank=True, null=True)
+    lat = models.FloatField(blank=True, null=True)
+    radius = models.FloatField(blank=True, null=True)
+    state = models.CharField(max_length=50, blank=True, null=True)
+    tag = models.ForeignKey(Tag, related_name="filters", on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
-        return self.user, self.tname
+        return self.user.username
+
 
 
 class Area(models.Model):

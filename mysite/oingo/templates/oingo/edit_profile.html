@@ -1,0 +1,48 @@
+{% extends "oingo/base.html" %}
+
+{% block content %}
+    
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-6">
+            <form role="form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <table>
+                        <tr><td><strong>username:</strong></td><td>{{profile_user.username}}</td></tr>
+                        <tr><td><strong>email:</strong></td><td>{{profile_user.email}}</td></tr>
+                        <tr>
+                            <td><strong>state:</strong></td>
+                            <td><input id="state" type="text" required name="new_state" value="{{profile_user.profile.state}}"></td>
+                        </tr>
+                        <tr><td><strong>current longitude:</strong></td><td>{{profile_user.profile.last_lon}}</td></tr>
+                        <tr><td><strong>current latitude:</strong></td><td>{{profile_user.profile.last_lat}}</td></tr>
+                        <!--<tr>-->
+                            <!--<td><strong>password:</strong></td>-->
+                            <!--<td><input type="password" class="form-control" id="exampleInputPassword1" required name="password"/></td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td><strong>repassword:</strong></td>-->
+                            <!--<td><input type="password" class="form-control" id="exampleInputPassword2" required name="repassword"/></td>-->
+                        <!--</tr>-->
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default btn-block" type="submit">
+                            save
+                        </button>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-default btn-block" type="button" onclick="javascript:history.back(-1)">
+                            back
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div> 
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "oingo/base.html" %}
+
+{% block content %}
+
+<div class="row">
+		<div class="col-md-3">
+		</div>
+		<div class="col-md-6">
+			<h3 class="text-left text-primary">
+				Register
+			</h3>
+
+    {% if status == 'success' %}
+        <div class="well">
+            <h2 class="text-success text-center">success!</h2>
+        </div>
+    {% elif status == 're_err' %}
+        <div class="well">
+            <h2 class="text-warning text-center">repassword wrong!</h2>
+        </div>
+    {% elif status == 'user_exist' %}
+        <div class="well">
+            <h2 class="text-danger text-center">user already exist!</h2>
+        </div>
+    {% endif %}
+
+			<form role="form" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="new_username">
+                        username
+                    </label>
+                    <input class="form-control" id="new_username" type="text" required name="new_username" />
+                </div>
+				<div class="form-group">
+					<label for="exampleInputEmail1">
+						Email address
+					</label>
+					<input type="email" class="form-control" id="exampleInputEmail1" required name="new_email"/>
+				</div>
+				<div class="form-group">
+
+					<label for="exampleInputPassword1">
+						Password
+					</label>
+					<input type="password" class="form-control" id="exampleInputPassword1" required name="new_password"/>
+				</div>
+				<div class="form-group">
+
+					<label for="exampleInputPassword2">
+						Re-password
+					</label>
+					<input type="password" class="form-control" id="exampleInputPassword2" required name="new_repassword"/>
+				</div>
+				<button type="submit" class="btn btn-primary" name="register">
+					Sign Up
+				</button>
+			</form>
+		</div>
+		<div class="col-md-3">
+		</div>
+	</div>
+
+{% endblock %}
