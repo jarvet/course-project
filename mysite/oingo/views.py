@@ -11,7 +11,6 @@ from django.urls import reverse
 from oingo.models import Filter, Tag, Friendship
 =======
 from oingo.models import Filter, Tag, Schedule, Location, Note
->>>>>>> 381dd41ca71a669538e1f56b54e09cc7be912ca6
 
 
 @login_required
@@ -236,6 +235,46 @@ def show_filter(request):
         "filters": filters,
     }
     return render(request, 'oingo/filter.html', content)
+
+@login_required
+def show_notes(request, uid, nid, filter_id):
+    userid = request.session.get('userid', '')
+    user = User.objects.get(id=userid)
+    note = Note.objects.get(id=nid)
+    filters = Filter.objects.filter(user=user)
+    #post = request.POST
+    if note.visiable_group == 1:
+        if filter.tag in note.tags and user in note.author.friendship.friends:
+            if filters.start_time > note.schedule.start_time and filters.end_time < note.schedule.end_time and filter.repetition == note.schedule.repetition and filter.from_date > note.schedule.from_date and filter.to_date < note.schedule.to_date and filter.lname == note.location.lname:
+                if within_radius(user.UserProfile.last_lon, user.UserProfile.last_lat, note.location.lon, note.location.lat) < filter.radius and within_radius(user.UserProfile.last_lon, user.UserProfile.last_lat, note.location.lon, note.location.lat) < note.visiable_radius:
+                    content = {
+                        "notecontent": note.note_content,
+                        "location": note.location,
+                    }
+                    return render(request, 'oingo/index.html', content)
+    elif note.visiable_group == 0:
+        if user == note.author:
+            if filters.start_time > note.schedule.start_time and filters.end_time < note.schedule.end_time and filter.repetition == note.schedule.repetition and filter.from_date > note.schedule.from_date and filter.to_date < note.schedule.to_date and filter.lname == note.location.lname:
+                if within_radius(user.UserProfile.last_lon, user.UserProfile.last_lat, note.location.lon, note.location.lat) < filter.radius and within_radius(user.UserProfile.last_lon, user.UserProfile.last_lat, note.location.lon, note.location.lat) < note.visiable_radius:
+                    content = {
+                        "notecontent": note.note_content,
+                        "location": note.location,
+                    }
+                    return render(request, 'oingo/index.html', content)
+    elif note.visiable_group == 2:
+        content = {
+            "notecontent": note.note_content,
+            "location": note.location,            }
+        return render(request, 'oingo/index.html', content)
+
+def within_radius(lon1, lat1, lon2, lat2):
+    R = 6373.0#radius of earth in km
+    dlon = lon2 - lon1
+    dlat = lat2 - lat1
+    a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
+    c = 2 * atan2(sqrt(a), sqrt(1 - a))
+    distance = R * c
+    return distance
 
 @login_required
 def edit_filter(request, filter_id):
