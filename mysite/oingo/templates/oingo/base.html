@@ -24,7 +24,7 @@
 
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="navbar-toggler-icon"></span>
-				</button> <a class="navbar-brand" href="#">Oingo</a>
+				</button> <a class="navbar-brand" href="{% url 'oingo:index' %}">Oingo</a>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="navbar-nav">
 						<li class="nav-item active">
@@ -67,9 +67,30 @@
     {% endblock %}
 
 </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAizY4-aVT9S7Ri6tTl5SJ-zY_WN6bJuQE" type="text/javascript"></script>
     <script src="{% static 'oingo/js/popper.min.js'%}"></script>
     <script src="{% static 'oingo/js/jquery.min.js'%}"></script>
     <script src="{% static 'oingo/js/bootstrap.min.js'%}"></script>
     <script src="{% static 'oingo/js/scripts.js'%}"></script>
+    <script src="{% static 'oingo/js/googleMap.js'%}"></script>
+    <script>
+        $("#google_maps_api").on("shown.bs.modal", function () {
+            googleMap.initialize();
+           // googleMap.maps.event.trigger(map, "resize");
+        }).on('hide.bs.modal', function () { //关闭模态框
+            <!--var res = '';-->
+            <!--for (var i in googleMap.markers)-->
+                <!--res += '(' + googleMap.markers[i].geo + '),';-->
+
+            <!--res = res.substring(0,res.length-1);-->
+            <!--res = googleMap.marker.geo;-->
+            <!--$("#locationText").val(res);-->
+            var lat = googleMap.marker.lat;
+            var lon = googleMap.marker.lon;
+            $("#lat").val(lat);
+            $("#lon").val(lon);
+        });
+    </script>
+
   </body>
 </html>
