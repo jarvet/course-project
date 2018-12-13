@@ -3,11 +3,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+import datetime
 
 # Create your views here.
 from django.urls import reverse
-from oingo.models import Filter, Tag, Friendship
-from oingo.models import Filter, Tag, Schedule, Location, Note
+from oingo.models import Filter, Tag, Friendship, Schedule, Location, Note, Comment
 
 
 @login_required
@@ -214,11 +214,28 @@ def index(request):
     content = {'username': username, 'userid': userid}
     return render(request, 'oingo/index.html', content)
 
-def post_comment(request):
-    pass
+def post_comment(request, nid):
+    username = request.session.get('username', '')
+    userid = request.session.get('userid', '')
+    user = User.objects.get(id=userid)
+    note = Note.objects.get(id=nid)
+    comment = user.comments
+    post = request.POST
+    if post:
+        if note.allow_comment == 1:
+            now = datetime.datetime.now()
+            content = {'content': comment.content, 'timestamp': now}
+            return render(request, 'oingo/index.html', content)
 
 def show_comment(request, nid):
-    pass
+    username = request.session.get('username', '')
+    userid = request.session.get('userid', '')
+    user = User.objects.get(id=userid)
+    note = Note.objects.get(id=nid)
+    comment = note.comments
+    if comment != NULL:
+        content = {'user': comment.user, 'content': content, 'timestamp': timestamp}
+        return render(request, 'oingo/index.html', content)
 
 @login_required
 def show_filter(request):
@@ -234,7 +251,7 @@ def show_filter(request):
     return render(request, 'oingo/filter.html', content)
 
 @login_required
-def show_notes(request, uid, nid, filter_id):
+def show_notes(request, nid):
     userid = request.session.get('userid', '')
     user = User.objects.get(id=userid)
     note = Note.objects.get(id=nid)
@@ -264,6 +281,7 @@ def show_notes(request, uid, nid, filter_id):
             "location": note.location,            }
         return render(request, 'oingo/index.html', content)
 
+#get radius between 2 points
 def within_radius(lon1, lat1, lon2, lat2):
     R = 6373.0#radius of earth in km
     dlon = lon2 - lon1
