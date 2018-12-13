@@ -15,5 +15,9 @@ urlpatterns = [
     path('create_filter', views.create_filter, name="create_filter"),
     path('edit_filter/<int:filter_id>', views.edit_filter, name="edit_filter"),
     path('remove_filter/<int:filter_id>', views.remove_filter, name="remove_filter"),
+<<<<<<< HEAD
     path('create_note', views.create_note, name="create_note"),
+=======
+    path('send_friend_request/<int:user_id',views.send_friend_request, name="send_friend_request"),
+>>>>>>> refs/remotes/origin/master
 ]

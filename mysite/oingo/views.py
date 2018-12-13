@@ -112,7 +112,27 @@ def edit_profile(request):
 
 
 def send_friend_request(request, from_user, to_user):
-    pass
+    requestedBy = from_user
+    receivedBy = to_user
+    if request.method == 'POST':
+
+    form = FriendMgmtForm(request.POST)
+    if form.is_valid():
+        user = User.objects.get(id)
+        friend_manage = Friendship(user=request.user, friend= user)
+        friend_manage.save()
+        return HttpResponseRedirect('/myfriends/')
+    else:
+        form = PdfValidationForm()
+    user = request.user
+    profile = UserProfile.objects.get(user=user)
+    full_name = user.get_full_name()
+    email = user.email
+    friends = FriendMgmt.objects.filter(user=request.user)
+    return render(request, 'friends.html',{'form': form,
+                                      'full_name':full_name,
+                                      'email':email,
+                                      'friends':friends,})
 
 def receive_friend_request(request, from_user, to_user):
     pass
