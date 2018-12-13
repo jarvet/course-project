@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="initial-scale=15.0, user-scalable=yes">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <title>
+            Location
+        </title>
+    </head>
+    <body onload="init()">
+        <h1>Location</h1>
+        <div class="style1">
+            <nav>
+                <button onclick="window.location.href='login.html'" class="float-left submit-button">Login</button>
+                <button onclick="window.location.href='location.html'" class="float-left submit-button">Location Picker</button>
+            </nav>
+        </div>
+        <div class="style2">
+            <canvas id="myCanvas"></canvas>
+        </div>
+        <img class="snorlax" src="Snorlax.png" alt="pic1">
+        <div class="style3">
+        </div>
+        <div class="style5">
+            <form>
+                <input id="address" type="text">
+                <input id="findPlace" type="button" value="Submit"><br>
+            </form>
+            <form>
+                <label>Radius Between 400 and 20,000
+                    <input id="setRadius" type="number" name="Radius" min="400" max="20000">
+                </label>
+                <input id="nearbyRest" type="button" value="Find Nearby Restaurants" onclick="getRadius()">
+            </form>
+        </div>
+        <div id="Map"></div>
+        <div>
+            <p id="p666">This page has been tested in Chrome</p>
+        </div>
+        <div class="style4">
+            <img src="location.jpg" class="img1" alt="location">
+        </div>
+        <script>
+            var eventToday = "Please pick the location. ";
+            var aCanvas;
+            var textOnCanvas;
+            var position;
+            var gradient;
+            var infoWin;
+            var newMap;
+            function init() {
+                aCanvas = document.getElementById("myCanvas");
+                textOnCanvas = aCanvas.getContext("2d");
+                textOnCanvas.textBaseline = "middle";
+                textOnCanvas.font = "italic 15pt Arial";
+                gradient = textOnCanvas.createLinearGradient(0, 0, aCanvas.width, 0);
+                gradient.addColorStop("0", "blue");
+                gradient.addColorStop("0.5", "red");
+                gradient.addColorStop("1.0", "magenta");
+                textOnCanvas.fillStyle = gradient;
+                position = aCanvas.width + 50;
+                scrollText();
+            }
+            function scrollText() {
+                position--;
+                textOnCanvas.clearRect(0,0,aCanvas.width,aCanvas.height);
+                textOnCanvas.save();
+                textOnCanvas.translate(position,aCanvas.height/2);
+                textOnCanvas.fillText(eventToday, 0, 0);
+                textOnCanvas.restore();
+                var time = setTimeout("scrollText()", 15);
+            }
+            switch (new Date().getDay()) {
+                case 1:
+                    eventToday += "Today is Monday";
+                    break;
+                case 2:
+                    eventToday += "Today is Tuesday";
+                    break;
+                case 3:
+                    eventToday += "Today is Wednesday";
+                    break;
+                case 4:
+                    eventToday += "Today is Thursday";
+                    break;
+                case 5:
+                    eventToday += "Today is Friday";
+                    break;
+                default:
+                    eventToday += "Weekends";
+            }
+            function chaosMap() {
+                var myCenter = new google.maps.LatLng(44.974609, -93.233612);
+                var mapSetup = {center: myCenter, zoom: 15, mapTypeId: google.maps.MapTypeId.ROADMAP};
+                newMap = new google.maps.Map(document.getElementById("Map"), mapSetup);
+                var keller = new google.maps.Marker({position: {lat: 44.974548, lng: -93.232232}, animation: google.maps.Animation.BOUNCE});
+                var bell = new google.maps.Marker({position: {lat: 44.97783, lng: -93.233403}, animation: google.maps.Animation.BOUNCE});
+                var STSS = new google.maps.Marker({position: {lat: 44.973986, lng: -93.237283}, animation: google.maps.Animation.BOUNCE});
+                var willey = new google.maps.Marker({position: {lat: 44.973081, lng: -93.244254}, animation: google.maps.Animation.BOUNCE});
+                var blegen = new google.maps.Marker({position: {lat: 44.971825, lng: -93.243298}, animation: google.maps.Animation.BOUNCE});
+                var infoKeller = new google.maps.InfoWindow({content: "Keller:<br/>CSci 4061, EE 3025, EE 5301"});
+                var infoBell = new google.maps.InfoWindow({content: "Bell Museum:<br/>CSci 4061"});
+                var infoSTSS = new google.maps.InfoWindow({content: "STSS:<br/>CSci 4131"});
+                var infoWilley = new google.maps.InfoWindow({content: "Willey:<br/>Econ 1101"});
+                var infoBlegen = new google.maps.InfoWindow({content: "Blegen:<br/>Econ 1101"});
+                keller.setMap(newMap);
+                google.maps.event.addListener(keller, 'click', function() {infoKeller.open(newMap, keller);});
+                bell.setMap(newMap);
+                google.maps.event.addListener(bell, 'click', function() {infoBell.open(newMap, bell);});
+                STSS.setMap(newMap);
+                google.maps.event.addListener(STSS, 'click', function() {infoSTSS.open(newMap, STSS);});
+                willey.setMap(newMap);
+                google.maps.event.addListener(willey, 'click', function() {infoWilley.open(newMap, willey);});
+                blegen.setMap(newMap);
+                google.maps.event.addListener(blegen, 'click', function() {infoBlegen.open(newMap, blegen);});
+                var geocoder = new google.maps.Geocoder();
+                document.getElementById('findPlace').addEventListener('click', function() {geocodeAddress(geocoder, newMap);});
+            }
+            function displayImg(b) {
+                document.getElementById(b).style.visibility = "visible";
+            }
+            function hideImg(c) {
+                document.getElementById(c).style.visibility = "hidden";
+            }
+            function getRadius() {
+                var myCenter2 = {lat: 44.974609, lng: -93.233612};
+                var myRadius = document.getElementById("setRadius").value;
+                if ((myRadius > 20000) || (myRadius < 400)) {
+                    alert("!!!Please Enter Valid Radius!!!");
+                }
+                infoWin = new google.maps.InfoWindow();
+                var service = new google.maps.places.PlacesService(newMap);
+                service.nearbySearch({location: myCenter2, radius: myRadius, type: ['restaurant']}, callback);
+            }
+            //obtained from: https://developers.google.com/maps/documentation/javascript/examples/geocoding-simple
+            function geocodeAddress(geocoder, resultsMap) {
+                var address = document.getElementById('address').value;
+                geocoder.geocode({'address': address}, function(results, status) {
+                    if (status === 'OK') {
+                        resultsMap.setCenter(results[0].geometry.location);
+                        var marker = new google.maps.Marker({ map: resultsMap, position: results[0].geometry.location});
+                    }
+                    else {
+                        alert('Geocode was not successful for the following reason: ' + status);
+                    }
+                });
+            }
+            //obtained from: https://developers.google.com/maps/documentation/javascript/places
+            function callback(results, status) {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    for (var i = 0; i < results.length; i++) {
+                        createMarker(results[i]);
+                    }
+                }
+            }
+            //obtained from: https://developers.google.com/maps/documentation/javascript/places
+            function createMarker(place) {
+                var placeLoc = place.geometry.location;
+                var marker = new google.maps.Marker({map: newMap, position: place.geometry.location});
+                var service1 = new google.maps.places.PlacesService(newMap);
+                google.maps.event.addListener(marker, 'click', function() {
+                    service1.getDetails(place, function(place, status) {
+                        if (status !== google.maps.places.PlacesServiceStatus.OK) {
+                            console.error(status);
+                            return;
+                        }
+                    infoWin.setContent(place.name + '<br>' + place.formatted_address);
+                    infoWin.open(newMap, marker);
+                    });
+                });
+            }
+        </script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD53gppRIY9EyRG68a-UlfW-XhX3V3bCA8&libraries=places&callback=chaosMap" async defer></script>
+    </body>
+</html>
