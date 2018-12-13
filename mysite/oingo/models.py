@@ -74,10 +74,11 @@ class Filter(models.Model):
     lat = models.FloatField(blank=True, null=True)
     radius = models.FloatField(blank=True, null=True)
     state = models.CharField(max_length=50, blank=True, null=True)
-    tname = models.ForeignKey(Tag, related_name="filters", on_delete=models.CASCADE, blank=True, null=True)
+    tag = models.ForeignKey(Tag, related_name="filters", on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
-        return self.user.username, self.tname.tname
+        return self.user.username
+
 
 
 class Area(models.Model):

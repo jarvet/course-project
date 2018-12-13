@@ -9,7 +9,23 @@
 			<h3 class="text-left text-primary">
 				Register
 			</h3>
-			<form role="form">
+
+    {% if status == 'success' %}
+        <div class="well">
+            <h2 class="text-success text-center">success!</h2>
+        </div>
+    {% elif status == 're_err' %}
+        <div class="well">
+            <h2 class="text-warning text-center">repassword wrong!</h2>
+        </div>
+    {% elif status == 'user_exist' %}
+        <div class="well">
+            <h2 class="text-danger text-center">user already exist!</h2>
+        </div>
+    {% endif %}
+
+			<form role="form" method="post">
+                {% csrf_token %}
                 <div class="form-group">
                     <label for="new_username">
                         username

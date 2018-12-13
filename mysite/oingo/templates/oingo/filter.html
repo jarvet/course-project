@@ -1,0 +1,108 @@
+{% extends "oingo/base.html" %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-6">
+            <div class="row">
+                <h4><strong>Filters:</strong></h4>
+            </div>
+            <div class="row">
+
+
+                <div class="col-md-4">
+                    {% if filters %}
+                        {% for f in filters %}
+                            <table>
+                                <tr>
+                                    <td><strong>start time:</strong></td>
+                                    <td>{{ f.start_time }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>end time:</strong></td>
+                                    <td>{{ f.end_time }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>repetition:</strong></td>
+                                    <td>{{ f.repetition }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>from date:</strong></td>
+                                    <td>{{ f.from_date }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>to date:</strong></td>
+                                    <td>{{ f.to_date }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>location name:</strong></td>
+                                    <td>{{ f.lname }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>lat:</strong></td>
+                                    <td>{{ f.lat }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>lon:</strong></td>
+                                    <td>{{ f.lon }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>radius:</strong></td>
+                                    <td>{{ f.radius }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>state:</strong></td>
+                                    <td>{{ f.state }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>tname:</strong></td>
+                                    <td>{% if f.tag %}{{f.tag.tname }} {% else %} None {% endif %}</td>
+                                </tr>
+                            </table>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a href="{% url 'oingo:edit_filter' f.id%}">
+                                    <button class="btn btn-default btn-block" type="button">
+                                        edit
+                                    </button>
+                                    </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="{% url 'oingo:remove_filter' f.id%}">
+                                    <button class="btn btn-default btn-block" type="button">
+                                        remove
+                                    </button>
+                                    </a>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+                    {% else %}
+                        <table class="table table-bordered">
+                            <tr><td>No filters yet</td></tr>
+                        </table>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="{% url 'oingo:create_filter' %}">
+                    <button class="btn btn-default btn-block" type="button">
+                        create
+                    </button>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-default btn-block" type="button" onclick="javascript:history.back(-1)">
+                        back
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

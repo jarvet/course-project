@@ -1,0 +1,83 @@
+{% extends "oingo/base.html" %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-6">
+            <div class="row">
+                <h4><strong>Create Filter:</strong></h4>
+            </div>
+            <form role="form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <table>
+                        <tr>
+                            <td><strong>start time:</strong></td>
+                            <td><input id="start_time" type="time" name="start_time"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>end time:</strong></td>
+                            <td><input id="end_time" type="time" name="end_time"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>repetition:</strong></td>
+                            <td>
+                                <select id="repetition" name="repetition">
+                                    <option></option>
+                                    <option value=1>Every day</option>
+                                    <option value=7>Every 7 days</option>
+                                    <option value=30>Every 30 days</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>from date:</strong></td>
+                            <td><input id="from_date" type="date" name="from_date"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>to date:</strong></td>
+                            <td><input id="to_date" type="date" name="to_date"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>location name:</strong></td>
+                            <td><input id="lname" type="text" name="lname"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>lat:</strong></td>
+                            <td><input id="lat" type="number" step=any name="lat"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>lon:</strong></td>
+                            <td><input id="lon" type="number" step=any name="lon"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>radius:</strong></td>
+                            <td><input id="radius" type="number" step=any name="radius"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>state:</strong></td>
+                            <td><input id="state" type="text" name="state"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>tname:</strong></td>
+                            <td><input id="tname" type="text" name="tname"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default btn-block" type="submit">
+                            save
+                        </button>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-default btn-block" type="button" onclick="javascript:history.back(-1)">
+                            back
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

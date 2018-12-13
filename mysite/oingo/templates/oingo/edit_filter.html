@@ -1,0 +1,80 @@
+{% extends "oingo/base.html" %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-6">
+            <form role="form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <table>
+                        <tr>
+                            <td><strong>start time:</strong></td>
+                            <td><input id="start_time" type="time" name="start_time" value="{{ filter.start_time | time:'H:i' }}"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>end time:</strong></td>
+                            <td><input id="end_time" type="time" name="end_time" value="{{ filter.end_time | time:'H:i' }}"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>repetition:</strong></td>
+                            <td>
+                                <select id="repetition" name="repetition">
+                                    <option {% if not filter.repetition %} selected {% endif %}></option>
+                                    <option value=1 {% if filter.repetition == 1 %} selected {% endif %}>Every day</option>
+                                    <option value=7 {% if filter.repetition == 7 %} selected {% endif %}>Every 7 days</option>
+                                    <option value=30 {% if filter.repetition == 30 %} selected {% endif %}>Every 30 days</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>from date:</strong></td>
+                            <td><input id="from_date" type="date" name="from_date" value="{{ filter.from_date | date:'Y-m-d'}}"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>to date:</strong></td>
+                            <td><input id="to_date" type="date" name="to_date" value="{{ filter.to_date | date:'Y-m-d'}}"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>location name:</strong></td>
+                            <td><input id="lname" type="text" name="lname" value="{{ filter.lname }}"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>lat:</strong></td>
+                            <td><input id="lat" type="number" step=any name="lat" value="{{ filter.lat }}"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>lon:</strong></td>
+                            <td><input id="lon" type="number" step=any name="lon" value="{{ filter.lon }}"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>radius:</strong></td>
+                            <td><input id="radius" type="number" step=any name="radius" value="{{ filter.radius }}"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>state:</strong></td>
+                            <td><input id="state" type="text" name="state" value="{{ filter.state }}"></td>
+                        </tr>
+                        <tr>
+                            <td><strong>tname:</strong></td>
+                            <td><input id="tname" type="text" name="tname" value="{% if filter.tag %}{{filter.tag.tname }} {% else %} None {% endif %}"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-default btn-block" type="submit">
+                            save
+                        </button>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-default btn-block" type="button" onclick="javascript:history.back(-1)">
+                            back
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
