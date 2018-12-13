@@ -6,10 +6,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse
-
-<<<<<<< HEAD
 from oingo.models import Filter, Tag, Friendship
-=======
 from oingo.models import Filter, Tag, Schedule, Location, Note
 
 
