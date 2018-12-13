@@ -7,7 +7,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.urls import reverse
 
-from oingo.models import Filter, Tag
+from oingo.models import Filter, Tag, Friendship
 
 
 @login_required
@@ -115,7 +115,8 @@ def edit_profile(request):
 
 
 def send_friend_request(request, from_user, to_user):
-    requestedBy = from_user
+    userid = request.session.get('userid', '')
+    #requestedBy = from_user
     receivedBy = to_user
     if request.method == 'POST':
 
@@ -132,16 +133,31 @@ def send_friend_request(request, from_user, to_user):
     full_name = user.get_full_name()
     email = user.email
     friends = FriendMgmt.objects.filter(user=request.user)
-    return render(request, 'friends.html',{'form': form,
-                                      'full_name':full_name,
-                                      'email':email,
-                                      'friends':friends,})
+    return render(request, 'friends.html',{'full_name':full_name,
+                                      'email':email,})
 
 def receive_friend_request(request, from_user, to_user):
-    pass
+    #username = request.session.get('username', '')
+    userid = request.session.get('userid', '')
+    user = User.objects.get(id=userid)
+    receivedBy = User.objects.get(user=to_user)
+    content = {
+        "username": username,
+        "email": email,
+    }
+    return render(request, 'oingo/friends.html', content)
 
 def show_friends(request, user_id):
-    pass
+    #username = request.session.get('username', '')
+    userid = request.session.get('userid', '')
+    user = User.objects.get(id=userid)
+    friends = Friendship.objects.get(user=user)
+    content = {
+        "username": username,
+        "userid": userid,
+        "friends": friends,
+    }
+    return render(request, 'oingo/friends.html', content)
 
 def publish_note(request):
     pass
