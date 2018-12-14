@@ -7,7 +7,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.urls import reverse
 
-from oingo.models import Filter, Tag, Schedule, Location, Note, Friendship
+from oingo.models import Filter, Tag, Schedule, Location, Note, Friendship, Comment
 
 
 @login_required
@@ -195,16 +195,13 @@ def create_note(request):
     userid = request.session.get('userid', '')
     user = User.objects.get(id=userid)
     post = request.POST
-    if post:
+    if post and 'save' in post:
         tnames = post.get('tags', '')
         tags = set()
         for tname in tnames.split(';'):
-            if tname:
-                tag, created = Tag.objects.get_or_create(tname=tname)
-                if created:
-                    tag.save()
-            else:
-                tag = None
+            tag, created = Tag.objects.get_or_create(tname=tname)
+            if created:
+                tag.save()
             tags.add(tag)
         schedule = Schedule(
                 start_time=post.get('start_time'),
@@ -244,13 +241,38 @@ def index(request):
     username = request.session.get('username', '')
     userid = request.session.get('userid', '')
     content = {'username': username, 'userid': userid}
+    notes = Note.objects.all()
+    content = {
+        'username': username,
+        'userid': userid,
+        'notes': notes
+    }
     return render(request, 'oingo/index.html', content)
 
-def post_comment(request):
-    pass
-
-def show_comment(request, nid):
-    pass
+@login_required
+def add_comment(request, note_id):
+    username = request.session.get('username', '')
+    userid = request.session.get('userid', '')
+    user = User.objects.get(id=userid)
+    note = Note.objects.get(id=note_id)
+    post = request.POST
+    if post:
+        comment_content = post.get('new_comment')
+        new_comment = Comment(
+                user=user,
+                note=note,
+                content=comment_content
+            )
+        new_comment.save()
+        note.save()
+        # return HttpResponseRedirect(reverse('oingo:add_comment', args=(note_id,)))
+        # return render
+    content = {
+        'username': username,
+        'userid': userid,
+        'note': note
+    }
+    return render(request, 'oingo/note_detail.html', content)
 
 @login_required
 def show_filter(request):
@@ -319,7 +341,7 @@ def create_filter(request):
     userid = request.session.get('userid', '')
     user = User.objects.get(id=userid)
     post = request.POST
-    if post:
+    if post and 'save' in post:
         tname = post.get('tname', '')
         if tname:
             tag, created = Tag.objects.get_or_create(tname=tname)
@@ -352,3 +374,13 @@ def create_filter(request):
 
 def _get_empty_to_none(val):
     return val if val else None
+
+#get radius between 2 points
+def _get_distance(lon1, lat1, lon2, lat2):
+    R = 6373.0#radius of earth in km
+    dlon = lon2 - lon1
+    dlat = lat2 - lat1
+    a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
+    c = 2 * atan2(sqrt(a), sqrt(1 - a))
+    distance = R * c
+    return distance
