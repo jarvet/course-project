@@ -24,9 +24,9 @@ def login(request):
         if 'login' in post:
             username = post['username']
             password = post['password']
-            unchecked_user = User.objects.get(username=username)
+            unchecked_user = User.objects.filter(username=username)
             if unchecked_user:
-                user = auth.authenticate(username=unchecked_user.username, password=password)
+                user = auth.authenticate(username=username, password=password)
                 if user is not None:
                     if user.is_active:
                         auth.login(request, user)
@@ -110,7 +110,24 @@ def edit_profile(request):
     }
     return render(request, "oingo/edit_profile.html", content)
 
+@login_required
+def accept_friend_request(request, friend_id):
+    username = request.session.get('username', '')
+    userid = request.session.get('userid', '')
+    user = User.objects.get(id=userid)
+    friend = User.objects.get(id=friend_id)
+    friendship = Friendship.objects.get(user=friend_id, friend=userid)
+    friendship.is_request = False
+    friendship.save()
+    reverse_friendship = Friendship(
+            user=user,
+            friend=friend,
+            is_request=False
+        )
+    reverse_friendship.save()
+    return HttpResponseRedirect(reverse('oingo:show_friends'))
 
+<<<<<<< HEAD
 def send_friend_request(request, from_user, to_user):
     userid = request.session.get('userid', '')
     #requestedBy = from_user
@@ -155,7 +172,69 @@ def show_friends(request, user_id):
         "friends": friends,
     }
     return render(request, 'oingo/friends.html', content)
+=======
+@login_required
+def reject_friend_request(request, friend_id):
+    username = request.session.get('username', '')
+    userid = request.session.get('userid', '')
+    user = User.objects.get(id=userid)
+    friend = User.objects.get(id=friend_id)
+    Friendship.objects.get(user=friend, friend=user).delete()
+    return HttpResponseRedirect(reverse('oingo:show_friends'))
 
+@login_required
+def remove_friend(request, friend_id):
+    username = request.session.get('username', '')
+    userid = request.session.get('userid', '')
+    user = User.objects.get(id=userid)
+    friend = User.objects.get(id=friend_id)
+    Friendship.objects.get(user=user, friend=friend).delete()
+    Friendship.objects.get(user=friend, friend=user).delete()
+    return HttpResponseRedirect(reverse('oingo:show_friends'))
+
+
+@login_required
+def show_friends(request):
+    username = request.session.get('username', '')
+    userid = request.session.get('userid', '')
+    user = User.objects.get(id=userid)
+    friendships = Friendship.objects.filter(user=user, is_request=False).distinct()
+    requests = Friendship.objects.filter(friend=user, is_request=True).distinct()
+    friends = [ fs.friend for fs in friendships]
+    request_users = [rq.user for rq in requests]
+    content = {
+    'username': username,
+    'userid': userid,
+    'friends': friends,
+    'request_users': request_users,
+    }
+    post = request.POST
+    status = ''
+    if post:
+        friend_name = post.get('friend_name')
+        try:
+            friend = User.objects.get(username=friend_name)
+        except User.DoesNotExist:
+            friend = None
+            status = 'user_not_exist'
+        else:
+            if friend in friends:
+                status = 'already_friends'
+            elif friend in Friendship.objects.filter(user=user, is_request=True):
+                status = 'already_requested'
+            else:
+                new_friendship = Friendship(
+                        user=user,
+                        friend=friend
+                    )
+                new_friendship.save()
+                status = 'success'
+        content['status'] = status
+        # return HttpResponseRedirect(request.path_info)
+        return render(request, 'oingo/friend.html', content)
+>>>>>>> f28243fb439456d9609b2655dc8f24c4d10e1a3c
+
+    return render(request, 'oingo/friend.html', content)
 
 @login_required
 def create_note(request):
@@ -163,16 +242,13 @@ def create_note(request):
     userid = request.session.get('userid', '')
     user = User.objects.get(id=userid)
     post = request.POST
-    if post:
+    if post and 'save' in post:
         tnames = post.get('tags', '')
         tags = set()
         for tname in tnames.split(';'):
-            if tname:
-                tag, created = Tag.objects.get_or_create(tname=tname)
-                if created:
-                    tag.save()
-            else:
-                tag = None
+            tag, created = Tag.objects.get_or_create(tname=tname)
+            if created:
+                tag.save()
             tags.add(tag)
         schedule = Schedule(
                 start_time=post.get('start_time'),
@@ -212,8 +288,15 @@ def index(request):
     username = request.session.get('username', '')
     userid = request.session.get('userid', '')
     content = {'username': username, 'userid': userid}
+    notes = Note.objects.all()
+    content = {
+        'username': username,
+        'userid': userid,
+        'notes': notes
+    }
     return render(request, 'oingo/index.html', content)
 
+<<<<<<< HEAD
 def post_comment(request, nid):
     username = request.session.get('username', '')
     userid = request.session.get('userid', '')
@@ -236,6 +319,32 @@ def show_comment(request, nid):
     if comment != NULL:
         content = {'user': comment.user, 'content': content, 'timestamp': timestamp}
         return render(request, 'oingo/index.html', content)
+=======
+@login_required
+def add_comment(request, note_id):
+    username = request.session.get('username', '')
+    userid = request.session.get('userid', '')
+    user = User.objects.get(id=userid)
+    note = Note.objects.get(id=note_id)
+    post = request.POST
+    if post:
+        comment_content = post.get('new_comment')
+        new_comment = Comment(
+                user=user,
+                note=note,
+                content=comment_content
+            )
+        new_comment.save()
+        note.save()
+        # return HttpResponseRedirect(reverse('oingo:add_comment', args=(note_id,)))
+        # return render
+    content = {
+        'username': username,
+        'userid': userid,
+        'note': note
+    }
+    return render(request, 'oingo/note_detail.html', content)
+>>>>>>> f28243fb439456d9609b2655dc8f24c4d10e1a3c
 
 @login_required
 def show_filter(request):
@@ -345,7 +454,7 @@ def create_filter(request):
     userid = request.session.get('userid', '')
     user = User.objects.get(id=userid)
     post = request.POST
-    if post:
+    if post and 'save' in post:
         tname = post.get('tname', '')
         if tname:
             tag, created = Tag.objects.get_or_create(tname=tname)
@@ -378,3 +487,13 @@ def create_filter(request):
 
 def _get_empty_to_none(val):
     return val if val else None
+
+#get radius between 2 points
+def _get_distance(lon1, lat1, lon2, lat2):
+    R = 6373.0#radius of earth in km
+    dlon = lon2 - lon1
+    dlat = lat2 - lat1
+    a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
+    c = 2 * atan2(sqrt(a), sqrt(1 - a))
+    distance = R * c
+    return distance

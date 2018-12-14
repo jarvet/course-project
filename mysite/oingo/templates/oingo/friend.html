@@ -1,0 +1,119 @@
+{% extends "oingo/base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+        <h3 class="text-left text-primary">
+            Add Friend:
+        </h3>
+
+        {% if status == 'success' %}
+            <div class="well">
+                <h2 class="text-success text-center">request sent!</h2>
+            </div>
+        {% elif status == 'already_friends' %}
+            <div class="well">
+                <h2 class="text-warning text-center">already friends!</h2>
+            </div>
+        {% elif status == 'user_not_exist' %}
+            <div class="well">
+                <h2 class="text-danger text-center">user not exist!</h2>
+            </div>
+        {% elif status == 'already_requested' %}
+            <div class="well">
+                <h2 class="text-warning text-center">already requested!</h2>
+            </div>
+        {% endif %}
+
+        <form role="form" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="new_username">
+                    friend name:
+                </label>
+                <input class="form-control" id="friend_name" type="text" required name="friend_name" />
+            </div>
+            <button type="submit" class="btn btn-primary" name="add_friend">
+                add
+            </button>
+        </form>        
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <h3 class="text-left text-primary">
+            Friend requests:
+        </h3>
+        {% if request_users %}
+            <table>
+            {% for user in request_users %}
+                <tr>
+                    <td>
+                        <a href="{% url 'oingo:profile' user.id %}">
+                            {{ user.username }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'oingo:accept_friend_request' user.id%}">
+                            <button class="btn btn-default btn-block" type="button">
+                                accept
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'oingo:reject_friend_request' user.id %}">
+                            <button class="btn btn-default btn-block" type="button">
+                                reject
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </table>
+        {% else %}
+            <table><tr><td>No requests yet.</td></tr></table>
+        {% endif %}
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <h3 class="text-left text-primary">
+            Friend list:
+        </h3>
+        {% if friends %}
+            <table>
+            {% for user in friends %}
+                <tr>
+                    <td>
+                        <a href="{% url 'oingo:profile' user.id %}">
+                            {{ user.username }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'oingo:remove_friend' user.id%}">
+                            <button class="btn btn-default btn-block" type="button">
+                                remove
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </table>
+        {% else %}
+            <table><tr><td>No friend yet.</td></tr></table>
+        {% endif %}
+    </div>
+    <div class="col-md-3"></div>
+</div>
+{% endblock %}

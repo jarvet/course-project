@@ -1,0 +1,120 @@
+{% extends "oingo/base.html" %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-6">
+            <div class="row">
+                <h4><strong>Notes:</strong></h4>
+            </div>
+
+            <form role="form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">     
+                    <table class="table table-bordered">
+                        <tr>
+                            <td><strong>author:</strong></td>
+                            <td>{{ note.author.username }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>location:</strong></td>
+                            <td>{{ note.location.lname }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>coordinate:</strong></td>
+                            <td>{{note.location.lat}},{{note.location.lon}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>radius(km)</strong></td>
+                            <td>{{note.visiable_radius}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>time:</strong></td>
+                            <td>{{ note.publish_time }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>content:</strong></td>
+                            <td>{{ note.note_content }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>tags:</strong></td>
+                            <td>
+                                {% for tag in note.tags.all %}
+                                    {{ tag.tname }}; 
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><strong>Schedule:</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>start time:</strong></td>
+                            <td>{{note.schedule.start_time}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>end time:</strong></td>
+                            <td>{{note.schedule.end_time}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>repetition:</strong></td>
+                            <td>{{note.schedule.repetition}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>from date:</strong></td>
+                            <td>{{note.schedule.from_date}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>to date:</strong></td>
+                            <td>{{note.schedule.to_date}}</td>
+                        </tr>
+                        
+
+                        {% if note.allow_comment == True %}
+                        <tr>
+                            <td colspan="2"><strong>comments:</strong></td>
+                        </tr>
+                        {% if note.comments.all %}
+                            {% for comment in note.comments.all %}
+                            <tr>
+                                <td>{{comment.user.username}},&nbsp;{{comment.timestamp}}:</td>
+                                <td>{{comment.content}}</td>
+                            </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="2">no comments yet.</td>
+                            </tr>
+                        {% endif %}
+                        <tr>
+                            <td colspan="2">
+                                <textarea id="new_comment" type="textarea" rows="4" cols="50" required name="new_comment"></textarea>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="2"><strong>comments not allowed </strong></td>
+                        </tr>
+
+                        {% endif %}
+                    </table>
+                </div>
+                <div class="row">
+                    {% if note.allow_comment == True%}
+                    <div class="col-md-4">
+                        <button class="btn btn-default btn-block" type="submit">
+                            comment
+                        </button>
+                    </div>
+                    {% endif %}
+                    <div class="col-md-4">
+                        <a href="{% url 'oingo:index' %}">
+                        <button class="btn btn-default btn-block" type="button" >
+                            back
+                        </button>
+                        </a>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

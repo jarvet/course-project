@@ -17,7 +17,8 @@
             <table>
                 <tr>
                     <td><strong>content:</strong></td>
-                    <td><input id="note_content" type="textarea" required name="note_content"></input></td>
+                    <!-- <td><input id="note_content" type="textarea" required name="note_content"></input></td> -->
+                    <td><textarea id="note_content" rows="4" cols="50" required name="note_content"></textarea></td>
                 </tr>
                 <tr>
                     <td><strong>Tags:(separate with ';')</strong></td>
@@ -64,9 +65,8 @@
                 </tr>
                 <tr>
                     <td>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#google_maps_api">
-                                Click to set coordinates.
-                        </button>
+                        <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#google_maps_api" value="Click to set coordinates.">
+                        </input>
 
                         <div class="modal fade" id="google_maps_api" tabindex="-1" role="dialog"
                              aria-labelledby="myModalLabel" aria-hidden="true">
@@ -88,7 +88,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><strong>visiable radius:</strong></td>
+                    <td><strong>visiable radius(km):</strong></td>
                     <td><input id="visiable_radius" type="number" step=any required name="visiable_radius"></td>
                 </tr>
                 <tr>
@@ -110,7 +110,7 @@
         </div>
         <div class="row">
             <div class="col-md-4">
-                <button class="btn btn-default btn-block" type="submit">
+                <button class="btn btn-default btn-block" type="submit" name="save">
                     save
                 </button>
             </div>

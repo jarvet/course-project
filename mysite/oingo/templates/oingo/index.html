@@ -1,6 +1,6 @@
 {% extends "oingo/base.html" %}
 {% block content %}
-    <textarea class="form-control" id="locationText" rows="2" style="width:500px"></textarea>
+<!--     <textarea class="form-control" id="locationText" rows="2" style="width:500px"></textarea>
     <input type="text" class="form-control" id="lat">
     <input type="text" class="form-control" id="lon">
 
@@ -23,6 +23,101 @@
                     <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">OK</button>
                 </div>
             </div>
+        </div>
+    </div> -->
+
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-6">
+            <div class="row">
+                <h4><strong>Notes:</strong></h4>
+            </div>
+            <!-- <div class="row"> -->
+                    {% if notes %}
+                        {% for note in notes %}
+
+                        <form role="form" method="method" action="{% url 'oingo:add_comment' note.id %}">
+                            {% csrf_token %}
+                            <row class="rows">     
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td><strong>author:</strong></td>
+                                        <td>{{ note.author.username }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>location:</strong></td>
+                                        <td>{{ note.location.lname }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>time:</strong></td>
+                                        <td>{{ note.publish_time }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>content:</strong></td>
+                                        <td>{{ note.note_content }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>tags:</strong></td>
+                                        <td>
+                                            {% for tag in note.tags.all %}
+                                                {{ tag.tname }}; 
+                                            {% endfor %}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                        <a href="{% url 'oingo:add_comment' note.id%}">
+                                        <button class="btn btn-default btn-block" type="button">
+                                            deatils & comments
+                                        </button>
+                                        </a>
+                                            
+                                        </td>
+                                    </tr>
+
+                                    <!-- {% if note.allow_comment == True %} -->
+<!--                                     <tr>
+                                        <td colspan="2"><strong>comments:</strong></td>
+                                    </tr>
+                                    {% if note.comments.all %}
+                                        {% for comment in comments %}
+                                        <tr>
+                                            <td>{{comment.user.username}},&nbsp;{{comment.timestamp}}:</td>
+                                            <td>{{comment.content}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="2">no comments yet.</td>
+                                        </tr>
+                                    {% endif %} -->
+ <!--                                    <tr>
+                                        <td colspan="2">
+                                            <textarea id="new_comment" type="textarea" rows="4" cols="50" required name="new_comment"></textarea>
+                        <button class="btn btn-default btn-block" type="submit">
+                            add
+                        </button>
+                                        </td>
+                                    </tr> -->
+ <!--                                    {% else %}
+                                    <tr>
+                                        <td colspan="2"><strong>comments not allowed </strong></td>
+                                    </tr>
+
+                                    {% endif %} -->
+                                </table>
+                            </row>
+
+                        </form>
+                        {% endfor %}
+                    {% else %}
+                        <div class="row">
+                        <table class="table table-bordered">
+                            <tr><td>No notes yet</td></tr>
+                        </table>
+                        </div>
+                    {% endif %}
+            <!-- </div> -->
         </div>
     </div>
 {% endblock %}
