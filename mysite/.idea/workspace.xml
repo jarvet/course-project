@@ -14,11 +14,11 @@
       <content type="file-editors">
         <state>
           <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-            <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+            <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/polls/models.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="477">
-                    <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+                  <state relative-caret-position="315">
+                    <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
                     <folding>
                       <element signature="e#0#15#0" expanded="true" />
                     </folding>
@@ -38,7 +38,7 @@
             <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/polls/urls.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="168">
+                  <state relative-caret-position="126">
                     <caret line="8" column="72" selection-start-line="8" selection-start-column="72" selection-end-line="8" selection-end-column="72" />
                     <folding>
                       <element signature="e#0#28#0" expanded="true" />
@@ -50,7 +50,7 @@
             <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/polls/views.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="225">
+                  <state relative-caret-position="903">
                     <caret line="53" column="16" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="16" />
                     <folding>
                       <element signature="e#0#54#0" expanded="true" />
@@ -62,7 +62,7 @@
             <file leaf-file-name="tests.py" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/polls/tests.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="63">
+                  <state relative-caret-position="1764">
                     <caret line="93" column="11" selection-start-line="93" selection-start-column="11" selection-end-line="93" selection-end-column="11" />
                     <folding>
                       <element signature="e#0#32#0" expanded="true" />
@@ -75,16 +75,16 @@
               <entry file="file://$PROJECT_DIR$/polls/templates/polls/results.html">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="168">
-                    <caret line="8" column="62" lean-forward="true" selection-start-line="8" selection-start-column="62" selection-end-line="8" selection-end-column="62" />
+                    <caret line="8" column="62" selection-start-line="8" selection-start-column="62" selection-end-line="8" selection-end-column="62" />
                   </state>
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+            <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/polls/templates/polls/index.html">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="42">
-                    <caret line="2" column="71" selection-start-line="2" selection-start-column="56" selection-end-line="2" selection-end-column="71" />
+                  <state relative-caret-position="63">
+                    <caret line="3" selection-start-line="3" selection-end-line="3" />
                   </state>
                 </provider>
               </entry>
@@ -104,17 +104,26 @@
     </window>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.48403648">
+    <splitter split-orientation="horizontal" split-proportion="0.44923425">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/oingo/views.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1234">
-                  <caret line="160" selection-start-line="160" selection-end-line="160" />
+                <state relative-caret-position="252">
+                  <caret line="323" column="30" lean-forward="true" selection-start-line="323" selection-start-column="30" selection-end-line="323" selection-end-column="30" />
                   <folding>
-                    <element signature="e#0#31#0" expanded="true" />
+                    <element signature="e#0#38#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="note_detail.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/note_detail.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="399">
+                  <caret line="76" column="37" selection-start-line="76" selection-start-column="37" selection-end-line="76" selection-end-column="37" />
                 </state>
               </provider>
             </entry>
@@ -123,7 +132,7 @@
             <entry file="file://$PROJECT_DIR$/oingo/tests.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="63">
-                  <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+                  <caret line="3" selection-start-line="3" selection-end-line="3" />
                 </state>
               </provider>
             </entry>
@@ -131,8 +140,8 @@
           <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/oingo/urls.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="336">
-                  <caret line="16" column="85" selection-start-line="16" selection-start-column="85" selection-end-line="16" selection-end-column="85" />
+                <state relative-caret-position="483">
+                  <caret line="23" column="66" selection-start-line="23" selection-start-column="66" selection-end-line="23" selection-end-column="66" />
                   <folding>
                     <element signature="e#0#28#0" expanded="true" />
                   </folding>
@@ -140,14 +149,23 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/oingo/models.py">
+          <file leaf-file-name="googleMap.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/oingo/static/oingo/js/googleMap.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="466">
-                  <caret line="80" selection-start-line="80" selection-end-line="80" />
+                <state>
+                  <caret column="17" lean-forward="true" selection-start-column="17" selection-end-column="17" />
                   <folding>
-                    <element signature="e#27#70#0" expanded="true" />
+                    <marker date="1544773174896" expanded="true" signature="2558:2696" ph="..." />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="scripts.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/oingo/static/oingo/js/scripts.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="378">
+                  <caret line="18" column="49" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
                 </state>
               </provider>
             </entry>
@@ -155,20 +173,8 @@
           <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/base.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="599">
-                  <caret line="90" column="19" selection-start-line="90" selection-start-column="19" selection-end-line="90" selection-end-column="19" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="googleMap.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/oingo/static/oingo/js/googleMap.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="443">
-                  <caret line="47" column="47" lean-forward="true" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
-                  <folding>
-                    <marker date="1544685278682" expanded="true" signature="2561:2699" ph="..." />
-                  </folding>
+                <state relative-caret-position="597">
+                  <caret line="94" column="13" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="13" />
                 </state>
               </provider>
             </entry>
@@ -180,39 +186,37 @@
           <file leaf-file-name="edit_profile.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/edit_profile.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="176">
-                  <caret line="25" column="69" selection-start-line="25" selection-start-column="69" selection-end-line="25" selection-end-column="69" />
+                <state relative-caret-position="231">
+                  <caret line="11" column="73" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="profile.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/profile.html">
+          <file leaf-file-name="set_loc_time.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/set_loc_time.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="504">
-                  <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
+                <state relative-caret-position="189">
+                  <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/login.html">
+          <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/mysite/settings.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
-                  <caret line="31" column="31" selection-start-line="31" selection-end-line="32" />
+                <state relative-caret-position="240">
+                  <caret line="109" column="16" selection-start-line="109" selection-start-column="16" selection-end-line="109" selection-end-column="16" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/index.html">
+          <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/oingo/models.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="84">
-                  <caret line="4" column="51" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
+                <state relative-caret-position="1554">
+                  <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
                   <folding>
-                    <element signature="n#style#0;n#textarea#0;n#!!top" expanded="true" />
-                    <element signature="e#766#773#1" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="e#27#70#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -221,17 +225,8 @@
           <file leaf-file-name="signup.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/signup.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-693">
+                <state>
                   <caret column="14" selection-end-line="1" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="filter.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/filter.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="445">
-                  <caret line="58" column="98" lean-forward="true" selection-start-line="58" selection-start-column="40" selection-end-line="58" selection-end-column="98" />
                 </state>
               </provider>
             </entry>
@@ -240,7 +235,16 @@
             <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/create_filter.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="189">
-                  <caret line="54" column="73" selection-start-line="54" selection-start-column="73" selection-end-line="54" selection-end-column="73" />
+                  <caret line="9" column="73" lean-forward="true" selection-start-line="9" selection-start-column="73" selection-end-line="9" selection-end-column="100" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/login.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="189">
+                  <caret line="9" column="21" lean-forward="true" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
                 </state>
               </provider>
             </entry>
@@ -248,8 +252,30 @@
           <file leaf-file-name="edit_filter.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/edit_filter.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1071">
-                  <caret line="51" column="73" selection-start-line="51" selection-start-column="73" selection-end-line="51" selection-end-column="73" />
+                <state relative-caret-position="1605">
+                  <caret line="87" column="122" selection-start-line="87" selection-start-column="122" selection-end-line="87" selection-end-column="122" />
+                  <folding>
+                    <element signature="e#3740#3747#1" expanded="true" />
+                    <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#td#0;n#tr#8;n#table#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="create_note.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/create_note.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="252">
+                  <caret line="15" column="92" selection-start-line="15" selection-start-column="92" selection-end-line="15" selection-end-column="92" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="filter.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/filter.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1659">
+                  <caret line="79" column="53" selection-start-line="79" selection-start-column="48" selection-end-line="79" selection-end-column="53" />
                 </state>
               </provider>
             </entry>
@@ -284,10 +310,23 @@
       <find>addMarker</find>
       <find>user_id</find>
       <find>Latitude</find>
+      <find>h4</find>
+      <find>start_date</find>
+      <find>_get_dis</find>
+      <find>days</find>
+      <find>ime</find>
+      <find>time</find>
+      <find>start_time</find>
+      <find>index</find>
+      <find>default</find>
+      <find>def in</find>
     </findStrings>
     <replaceStrings>
       <replace>filter.</replace>
       <replace>latitude.</replace>
+      <replace>h3</replace>
+      <replace>to_date</replace>
+      <replace>from_date</replace>
     </replaceStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -303,7 +342,6 @@
         <option value="$PROJECT_DIR$/polls/templates/polls/index.html" />
         <option value="$PROJECT_DIR$/polls/static/polls/style.css" />
         <option value="$PROJECT_DIR$/mysite/urls.py" />
-        <option value="$PROJECT_DIR$/mysite/settings.py" />
         <option value="$PROJECT_DIR$/oingo/static/oingo/signup.html" />
         <option value="$PROJECT_DIR$/oingo/templates/oingo/hello.html" />
         <option value="$PROJECT_DIR$/oingo/static/oingo/login.html" />
@@ -313,27 +351,33 @@
         <option value="$PROJECT_DIR$/oingo/templates/oingo/filters.html" />
         <option value="$PROJECT_DIR$/polls/models.py" />
         <option value="$PROJECT_DIR$/oingo/admin.py" />
-        <option value="$PROJECT_DIR$/oingo/templates/oingo/edit_profile.html" />
+        <option value="$PROJECT_DIR$/oingo/tests.py" />
+        <option value="$PROJECT_DIR$/oingo/templates/oingo/set_loc_time.py" />
         <option value="$PROJECT_DIR$/oingo/templates/oingo/profile.html" />
+        <option value="$PROJECT_DIR$/oingo/templates/oingo/friend.html" />
+        <option value="$PROJECT_DIR$/oingo/templates/oingo/index.html" />
+        <option value="$PROJECT_DIR$/oingo/templates/oingo/set_loc_time.html" />
         <option value="$PROJECT_DIR$/oingo/urls.py" />
-        <option value="$PROJECT_DIR$/oingo/models.py" />
+        <option value="$PROJECT_DIR$/oingo/static/oingo/js/googleMap.js" />
+        <option value="$PROJECT_DIR$/oingo/templates/oingo/base.html" />
+        <option value="$PROJECT_DIR$/oingo/templates/oingo/create_filter.html" />
+        <option value="$PROJECT_DIR$/oingo/templates/oingo/create_note.html" />
+        <option value="$PROJECT_DIR$/oingo/templates/oingo/edit_profile.html" />
+        <option value="$PROJECT_DIR$/oingo/static/oingo/js/scripts.js" />
+        <option value="$PROJECT_DIR$/mysite/settings.py" />
+        <option value="$PROJECT_DIR$/oingo/templates/oingo/note_detail.html" />
+        <option value="$PROJECT_DIR$/oingo/templates/oingo/edit_filter.html" />
         <option value="$PROJECT_DIR$/oingo/templates/oingo/filter.html" />
         <option value="$PROJECT_DIR$/oingo/views.py" />
-        <option value="$PROJECT_DIR$/oingo/templates/oingo/edit_filter.html" />
-        <option value="$PROJECT_DIR$/oingo/templates/oingo/create_filter.html" />
-        <option value="$PROJECT_DIR$/oingo/tests.py" />
-        <option value="$PROJECT_DIR$/oingo/static/oingo/js/scripts.js" />
-        <option value="$PROJECT_DIR$/oingo/templates/oingo/index.html" />
-        <option value="$PROJECT_DIR$/oingo/templates/oingo/base.html" />
-        <option value="$PROJECT_DIR$/oingo/static/oingo/js/googleMap.js" />
+        <option value="$PROJECT_DIR$/oingo/models.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="470" />
-    <option name="y" value="235" />
-    <option name="width" value="1018" />
-    <option name="height" value="1047" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -362,21 +406,6 @@
               <item name="mysite" type="462c0819:PsiDirectoryNode" />
               <item name="oingo" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mysite" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mysite" type="462c0819:PsiDirectoryNode" />
-              <item name="oingo" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="oingo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mysite" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mysite" type="462c0819:PsiDirectoryNode" />
-              <item name="oingo" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="oingo" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mysite" type="b2602c69:ProjectViewProjectNode" />
@@ -435,14 +464,14 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.08645833" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.08177083" />
       <window_info anchor="bottom" id="TODO" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5005208" side_tool="true" weight="0.32629356" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.50104165" side_tool="true" weight="0.18796198" />
       <window_info anchor="bottom" id="Run" order="6" />
       <window_info anchor="bottom" id="Version Control" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" order="0" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="1" sideWeight="0.49947917" visible="true" weight="0.18901795" />
+      <window_info anchor="bottom" id="Terminal" order="1" sideWeight="0.49895832" visible="true" weight="0.18796198" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -454,16 +483,26 @@
       <window_info anchor="bottom" id="Find" order="5" weight="0.32942432" />
     </layout>
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="51" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/oingo/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2037">
           <caret line="104" column="76" selection-start-line="104" selection-start-column="76" selection-end-line="104" selection-end-column="76" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -472,11 +511,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
-          <folding>
-            <element signature="n#style#0;n#textarea#0;n#!!top" expanded="true" />
-            <element signature="e#766#773#1" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -592,10 +626,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysite/settings.py">
+    <entry file="file://$PROJECT_DIR$/oingo/static/oingo/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="24" column="21" lean-forward="true" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+        <state relative-caret-position="147">
+          <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oingo/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -606,16 +647,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/polls/templates/polls/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/polls/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
+        <state relative-caret-position="126">
           <caret line="8" column="72" selection-start-line="8" selection-start-column="72" selection-end-line="8" selection-end-column="72" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
@@ -623,101 +657,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oingo/static/oingo/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/polls/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="93" column="11" selection-start-line="93" selection-start-column="11" selection-end-line="93" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/polls/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oingo/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/signup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-693">
-          <caret column="14" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oingo/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1234">
-          <caret line="160" selection-start-line="160" selection-end-line="160" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/edit_filter.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="51" column="73" selection-start-line="51" selection-start-column="73" selection-end-line="51" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/create_filter.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="54" column="73" selection-start-line="54" selection-start-column="73" selection-end-line="54" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oingo/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="16" column="85" selection-start-line="16" selection-start-column="85" selection-end-line="16" selection-end-column="85" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/edit_profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="25" column="69" selection-start-line="25" selection-start-column="69" selection-end-line="25" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/polls/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="903">
           <caret line="53" column="16" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="16" />
           <folding>
             <element signature="e#0#54#0" expanded="true" />
@@ -725,83 +667,205 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/polls/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1764">
+          <caret line="93" column="11" selection-start-line="93" selection-start-column="11" selection-end-line="93" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/polls/templates/polls/results.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
-          <caret line="8" column="62" lean-forward="true" selection-start-line="8" selection-start-column="62" selection-end-line="8" selection-end-column="62" />
+          <caret line="8" column="62" selection-start-line="8" selection-start-column="62" selection-end-line="8" selection-end-column="62" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/polls/templates/polls/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="71" selection-start-line="2" selection-start-column="56" selection-end-line="2" selection-end-column="71" />
+        <state relative-caret-position="63">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oingo/static/oingo/js/scripts.js">
+    <entry file="file://$PROJECT_DIR$/polls/templates/polls/detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="84">
+          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polls/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/set_loc_time.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/friend.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="34" lean-forward="true" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="45" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/signup.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="14" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/oingo/tests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/filter.html">
+    <entry file="file://$PROJECT_DIR$/oingo/static/oingo/js/bootstrap.bundle.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oingo/static/oingo/js/googleMap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="58" column="98" lean-forward="true" selection-start-line="58" selection-start-column="40" selection-end-line="58" selection-end-column="98" />
+        <state>
+          <caret column="17" lean-forward="true" selection-start-column="17" selection-end-column="17" />
+          <folding>
+            <marker date="1544773174896" expanded="true" signature="2558:2696" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="31" column="31" selection-start-line="31" selection-end-line="32" />
+        <state relative-caret-position="189">
+          <caret line="9" column="21" lean-forward="true" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/index.html">
+    <entry file="file://$PROJECT_DIR$/oingo/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="51" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
+        <state relative-caret-position="483">
+          <caret line="23" column="66" selection-start-line="23" selection-start-column="66" selection-end-line="23" selection-end-column="66" />
           <folding>
-            <element signature="n#style#0;n#textarea#0;n#!!top" expanded="true" />
-            <element signature="e#766#773#1" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="599">
-          <caret line="90" column="19" selection-start-line="90" selection-start-column="19" selection-end-line="90" selection-end-column="19" />
+        <state relative-caret-position="597">
+          <caret line="94" column="13" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/create_note.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="15" column="92" selection-start-line="15" selection-start-column="92" selection-end-line="15" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oingo/static/oingo/js/scripts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="49" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/edit_profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="73" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/set_loc_time.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/note_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="76" column="37" selection-start-line="76" selection-start-column="37" selection-end-line="76" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysite/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="109" column="16" selection-start-line="109" selection-start-column="16" selection-end-line="109" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/create_filter.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="73" lean-forward="true" selection-start-line="9" selection-start-column="73" selection-end-line="9" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/edit_filter.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1605">
+          <caret line="87" column="122" selection-start-line="87" selection-start-column="122" selection-end-line="87" selection-end-column="122" />
+          <folding>
+            <element signature="e#3740#3747#1" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#td#0;n#tr#8;n#table#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oingo/templates/oingo/filter.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1659">
+          <caret line="79" column="53" selection-start-line="79" selection-start-column="48" selection-end-line="79" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oingo/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="323" column="30" lean-forward="true" selection-start-line="323" selection-start-column="30" selection-end-line="323" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/oingo/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="80" selection-start-line="80" selection-end-line="80" />
+        <state relative-caret-position="1554">
+          <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
           <folding>
             <element signature="e#27#70#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oingo/static/oingo/js/googleMap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="47" column="47" lean-forward="true" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
-          <folding>
-            <marker date="1544685278682" expanded="true" signature="2561:2699" ph="..." />
           </folding>
         </state>
       </provider>

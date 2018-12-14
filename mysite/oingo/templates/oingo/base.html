@@ -31,7 +31,7 @@
 							 <a class="nav-link" href="{% url 'oingo:create_note' %}">Post Note <span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item">
-							 <a class="nav-link" href="#">Set Location & Time</a>
+							 <a class="nav-link" href="{% url 'oingo:set_loc_time' %}">Set Location & Time</a>
 						</li>
 					</ul>
 					<ul class="navbar-nav ml-md-auto">
@@ -90,10 +90,8 @@
             var lon = googleMap.marker.lon;
             $("#lat").val(lat);
             $("#lon").val(lon);
-
             }
         });
     </script>
-
   </body>
 </html>

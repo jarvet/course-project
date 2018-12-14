@@ -5,7 +5,7 @@
         <div class="col-md-4"></div>
         <div class="col-md-6">
             <div class="row">
-                <h4><strong>Filters:</strong></h4>
+                <h3 class="text-left text-primary"><strong>Filters:</strong></h3>
             </div>
             <div class="row">
 
@@ -14,50 +14,72 @@
                     {% if filters %}
                         {% for f in filters %}
                             <table>
+                                {% if f.start_time %}
                                 <tr>
                                     <td><strong>start time:</strong></td>
                                     <td>{{ f.start_time }}</td>
                                 </tr>
+                                {% endif %}
+                                {% if f.end_time %}
                                 <tr>
                                     <td><strong>end time:</strong></td>
                                     <td>{{ f.end_time }}</td>
                                 </tr>
+                                {% endif %}
+                                {% if f.repetition %}
                                 <tr>
                                     <td><strong>repetition:</strong></td>
                                     <td>{{ f.repetition }}</td>
                                 </tr>
+                                {% endif %}
+                                {% if f.from_date %}
                                 <tr>
                                     <td><strong>from date:</strong></td>
                                     <td>{{ f.from_date }}</td>
                                 </tr>
+                                {% endif %}
+                                {% if f.to_date %}
                                 <tr>
                                     <td><strong>to date:</strong></td>
                                     <td>{{ f.to_date }}</td>
                                 </tr>
+                                {% endif %}
+                                {% if f.lname %}
                                 <tr>
                                     <td><strong>location name:</strong></td>
                                     <td>{{ f.lname }}</td>
                                 </tr>
+                                {% endif %}
+                                {% if f.lat %}
                                 <tr>
                                     <td><strong>lat:</strong></td>
                                     <td>{{ f.lat }}</td>
                                 </tr>
+                                {% endif %}
+                                {% if f.lon %}
                                 <tr>
                                     <td><strong>lon:</strong></td>
                                     <td>{{ f.lon }}</td>
                                 </tr>
+                                {% endif %}
+                                {% if f.radius %}
                                 <tr>
                                     <td><strong>radius:</strong></td>
                                     <td>{{ f.radius }}</td>
                                 </tr>
+                                {% endif %}
+                                {% if f.state %}
                                 <tr>
                                     <td><strong>state:</strong></td>
                                     <td>{{ f.state }}</td>
                                 </tr>
+                                {% endif %}
+                                {% if f.tag %}
                                 <tr>
                                     <td><strong>tname:</strong></td>
-                                    <td>{% if f.tag %}{{f.tag.tname }} {% else %} None {% endif %}</td>
+                                    <td>{{f.tag.tname }}</td>
                                 </tr>
+                                {% endif %}
                             </table>
 
                             <div class="row">

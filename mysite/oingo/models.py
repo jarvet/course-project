@@ -10,6 +10,7 @@ class UserProfile(models.Model):
     state = models.CharField(max_length=50, default="online")
     last_lon = models.FloatField(blank=True, null=True)
     last_lat = models.FloatField(blank=True, null=True)
+    last_timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.user.username
@@ -23,10 +24,6 @@ class Schedule(models.Model):
     repetition = models.IntegerField()
     from_date = models.DateField()
     to_date = models.DateField()
-
-    def __str__(self):
-        return "from_date: %s, to_date: %s, start_time: %s, end_time: %s, repetition: %s" % (
-            self.from_date, self.to_date, self.start_time, self.end_time, self.repetition)
 
 
 class Location(models.Model):
@@ -69,15 +66,12 @@ class Filter(models.Model):
     repetition = models.IntegerField(blank=True, null=True)
     from_date = models.DateField(blank=True, null=True)
     to_date = models.DateField(blank=True, null=True)
-    lname = models.CharField(max_length=50, blank=True, null=True)
+    lname = models.CharField(max_length=50, blank=True)
     lon = models.FloatField(blank=True, null=True)
     lat = models.FloatField(blank=True, null=True)
     radius = models.FloatField(blank=True, null=True)
-    state = models.CharField(max_length=50, blank=True, null=True)
+    state = models.CharField(max_length=50, blank=True)
     tag = models.ForeignKey(Tag, related_name="filters", on_delete=models.CASCADE, blank=True, null=True)
-
-    def __str__(self):
-        return self.user.username
 
 
 
@@ -106,7 +100,7 @@ class Comment(models.Model):
     timestamp = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.user, self.note, self.content
+        return self.content
 
 
 # class Attach(models.Model):
