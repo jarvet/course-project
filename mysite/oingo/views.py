@@ -127,7 +127,6 @@ def accept_friend_request(request, friend_id):
     reverse_friendship.save()
     return HttpResponseRedirect(reverse('oingo:show_friends'))
 
-<<<<<<< HEAD
 def send_friend_request(request, from_user, to_user):
     userid = request.session.get('userid', '')
     #requestedBy = from_user
@@ -172,7 +171,7 @@ def show_friends(request, user_id):
         "friends": friends,
     }
     return render(request, 'oingo/friends.html', content)
-=======
+
 @login_required
 def reject_friend_request(request, friend_id):
     username = request.session.get('username', '')
@@ -232,8 +231,6 @@ def show_friends(request):
         content['status'] = status
         # return HttpResponseRedirect(request.path_info)
         return render(request, 'oingo/friend.html', content)
->>>>>>> f28243fb439456d9609b2655dc8f24c4d10e1a3c
-
     return render(request, 'oingo/friend.html', content)
 
 @login_required
@@ -296,7 +293,6 @@ def index(request):
     }
     return render(request, 'oingo/index.html', content)
 
-<<<<<<< HEAD
 def post_comment(request, nid):
     username = request.session.get('username', '')
     userid = request.session.get('userid', '')
@@ -319,7 +315,7 @@ def show_comment(request, nid):
     if comment != NULL:
         content = {'user': comment.user, 'content': content, 'timestamp': timestamp}
         return render(request, 'oingo/index.html', content)
-=======
+
 @login_required
 def add_comment(request, note_id):
     username = request.session.get('username', '')
@@ -337,14 +333,12 @@ def add_comment(request, note_id):
         new_comment.save()
         note.save()
         # return HttpResponseRedirect(reverse('oingo:add_comment', args=(note_id,)))
-        # return render
     content = {
         'username': username,
         'userid': userid,
         'note': note
     }
     return render(request, 'oingo/note_detail.html', content)
->>>>>>> f28243fb439456d9609b2655dc8f24c4d10e1a3c
 
 @login_required
 def show_filter(request):
