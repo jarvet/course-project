@@ -377,7 +377,8 @@ def index(request):
     # distance_notes = Note.objects.annotate(dis=ExpressionWrapper(F('visiable_radius')-_get_distance(F('location__lon'), F('location__lat'), cur_lon, cur_lat), output_field=FloatField())).filter(dis__gte=0)
     distance_note_id_set = set()
     for note in notes.all():
-        if note.visiable_radius >= _get_distance(note.location.lon, note.location.lat, cur_lon, cur_lat):
+        if (note.visiable_radius is None or note.location.lon is None or note.location.lat is None) \
+                or (note.visiable_radius >= _get_distance(note.location.lon, note.location.lat, cur_lon, cur_lat)):
             distance_note_id_set.add(note.id)
     distance_notes = notes.filter(id__in=distance_note_id_set)
 

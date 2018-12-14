@@ -8,8 +8,8 @@ from django.dispatch import receiver
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE)
     state = models.CharField(max_length=50, default="online")
-    last_lon = models.FloatField(blank=True, null=True)
-    last_lat = models.FloatField(blank=True, null=True)
+    last_lon = models.FloatField(default=0)
+    last_lat = models.FloatField(default=0)
     last_timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
