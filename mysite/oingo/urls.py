@@ -22,5 +22,6 @@ urlpatterns = [
     path('remove_friend/<int:friend_id>', views.remove_friend, name="remove_friend"),
     path('add_comment/<int:note_id>', views.add_comment, name="add_comment"),
     path('set_loc_time', views.set_loc_time, name="set_loc_time"),
+    path('own_notes', views.own_notes, name="own_notes"),
 
 ]

@@ -264,6 +264,24 @@ def create_note(request):
     }
     return render(request, "oingo/create_note.html", content)
 
+@login_required
+def own_notes(request):
+    username = request.session.get('username', '')
+    userid = request.session.get('userid', '')
+    user = User.objects.get(id=userid)
+    notes = Note.objects.filter(author=user)
+    post = request.POST
+    content = {
+        'username': username,
+        'userid': userid,
+        'notes': notes
+    }
+    if post:
+        keyword = post.get('keyword', '')
+        search_notes = Note.objects.filter(note_content__icontains=keyword)
+        content['notes'] = search_notes.intersection(notes)
+    return render(request, 'oingo/index.html', content)
+
 
 # show notes
 # @login_required
