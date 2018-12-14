@@ -372,7 +372,7 @@ def index(request):
     for note in notes.all():
         if cur_time.date() <= note.schedule.to_date and (cur_time.date() - note.schedule.from_date).days % note.schedule.repetition == 0:
             date_note_id_set.add(note.id)
-    date_notes = notes.filter(id__in=date_note_id_set)
+    date_notes = Note.objects.filter(id__in=date_note_id_set)
     notes = notes.intersection(date_notes)
     # distance_notes = Note.objects.annotate(dis=ExpressionWrapper(F('visiable_radius')-_get_distance(F('location__lon'), F('location__lat'), cur_lon, cur_lat), output_field=FloatField())).filter(dis__gte=0)
     distance_note_id_set = set()
@@ -380,10 +380,8 @@ def index(request):
         if (note.visiable_radius is None or note.location.lon is None or note.location.lat is None) \
                 or (note.visiable_radius >= _get_distance(note.location.lon, note.location.lat, cur_lon, cur_lat)):
             distance_note_id_set.add(note.id)
-    distance_notes = notes.filter(id__in=distance_note_id_set)
-
+    distance_notes = Note.objects.filter(id__in=distance_note_id_set)
     matching_notes = notes.intersection(distance_notes)
-
 
     # tags = set([tag for note in matching_notes for tag in note.tags])
     filters = Filter.objects.filter(Q(user=user)).filter(Q(state=state) | Q(state__isnull=True) | Q(state__exact=''))
@@ -398,7 +396,7 @@ def index(request):
     for filter in filters.all():
         if (filter.from_date is None or filter.to_date is None) or (cur_time.date() < filter.to_date and (cur_time.date() - filter.from_date).days % filter.repetition == 0):
             date_filter_id_set.add(filter.id)
-    date_filters = filters.filter(id__in=date_filter_id_set)
+    date_filters = Filter.objects.filter(id__in=date_filter_id_set)
 
     filters = filters.intersection(date_filters)
 
@@ -408,12 +406,11 @@ def index(request):
         if (filter.radius is None or filter.lon is None or filter.lat is None) \
                 or (filter.radius >= _get_distance(filter.lon, filter.lat, cur_lon, cur_lat)):
             distance_filter_id_set.add(filter.id)
-    distance_filters = filters.filter(id__in=distance_filter_id_set)
+    distance_filters = Filter.objects.filter(id__in=distance_filter_id_set)
 
     matching_filters = filters.intersection(distance_filters)
 
     tnames = set([f.tag.tname if f.tag else None for f in matching_filters])
-    print(tnames)
     if not tnames or None in tnames or '' in tnames:
         result_notes = matching_notes
     else:
@@ -429,6 +426,7 @@ def index(request):
         keyword = post.get('keyword', '')
         search_notes = Note.objects.filter(note_content__icontains=keyword)
         content['notes'] = search_notes.intersection(result_notes)
+    print(content['notes'])
     return render(request, 'oingo/index.html', content)
 
 
