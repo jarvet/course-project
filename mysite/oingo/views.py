@@ -282,6 +282,59 @@ def own_notes(request):
         content['notes'] = search_notes.intersection(notes)
     return render(request, 'oingo/index.html', content)
 
+@login_required
+def edit_note(request, note_id):
+    username = request.session.get('username', '')
+    userid = request.session.get('userid', '')
+    note = Note.objects.get(id=note_id)
+    post = request.POST
+    if post:
+        tnames = post.get('tags', '')
+        tags = set()
+        for tname in tnames.split(';'):
+            tag, created = Tag.objects.get_or_create(tname=tname)
+            if created:
+                tag.save()
+            tags.add(tag)
+
+        note.schedule.start_time = post.get('start_time')
+        note.schedule.end_time = post.get('end_time')
+        note.schedule.from_date = post.get('from_date')
+        note.schedule.to_date = post.get('to_date')
+        note.schedule.repetition = post.get('repetition')
+        note.schedule.save()
+
+        note.location.lname=post.get('lname')
+        note.location.lat=post.get('lat')
+        note.location.lon=post.get('lon')
+        note.location.save()
+
+        note.note_content=post.get('note_content')
+        note.visiable_group=post.get('visiable_group')
+        note.allow_comment=True if post.get('allow_comment') == 'allow' else False
+        note.visiable_radius=post.get('visiable_radius')
+        note.save()
+        note.tags.set(tags)
+        note.save()
+        return HttpResponseRedirect(reverse('oingo:add_comment', args=(note_id,)))
+    content = {
+        'username': username,
+        'userid': userid,
+        'note': note
+    }
+    return render(request, "oingo/edit_note.html", content)
+
+@login_required
+def remove_note(request, note_id):
+    username = request.session.get('username', '')
+    userid = request.session.get('userid', '')
+    note = Note.objects.get(id=note_id)
+    note.delete()
+    content = {
+        "username": username,
+        "userid": userid,
+    }
+    return HttpResponseRedirect(reverse('oingo:index'))
 
 # show notes
 # @login_required

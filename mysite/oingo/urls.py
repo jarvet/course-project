@@ -23,5 +23,6 @@ urlpatterns = [
     path('add_comment/<int:note_id>', views.add_comment, name="add_comment"),
     path('set_loc_time', views.set_loc_time, name="set_loc_time"),
     path('own_notes', views.own_notes, name="own_notes"),
-
+    path('edit_note/<int:note_id>', views.edit_note, name="edit_note"),
+    path('remove_note/<int:note_id>', views.remove_note, name="remove_note")
 ]

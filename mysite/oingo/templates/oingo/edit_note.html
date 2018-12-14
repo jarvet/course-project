@@ -1,10 +1,130 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "oingo/base.html" %}
 
-</body>
-</html>
+{% block content %}
+    
+<div class="row">
+<div class="col-md-4"></div>
+<div class="col-md-6">
+    <div class="row">
+        <h3 class="text-left text-primary"><strong>Create Note:</strong></h3>
+    </div>
+    {% if status == 'success' %}
+        <div class="well">
+            <h3 class="text-success text-center"> success！</h3>
+        </div>
+    {% endif %}
+    <form role="form" method="post" enctype="multipart/form-data" onsubmit="return verify()">
+        {% csrf_token %}
+        <div class="row">
+            <table>
+                <tr>
+                    <td><strong>content:</strong></td>
+                    <!-- <td><input id="note_content" type="textarea" required name="note_content"></input></td> -->
+                    <td><textarea id="note_content" rows="4" cols="50" required name="note_content" >{{ note.note_content }}</textarea></td>
+                </tr>
+                <tr>
+                    <td><strong>Tags:(separate with ';')</strong></td>
+                    <td>
+                        <input id="tags" type="text" name="tags"
+                               value="{% for tag in note.tags.all %}{{ tag.tname }};{% endfor %}">
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>start time:</strong></td>
+                    <td><input id="start_time" type="time" required name="start_time" value="{{note.schedule.start_time | time:'H:i' }}"></td>
+                </tr>
+                <tr>
+                    <td><strong>end time:</strong></td>
+                    <td><input id="end_time" type="time" required name="end_time" value="{{note.schedule.end_time | time:'H:i' }}"></td>
+                </tr>
+                <tr>
+                    <td><strong>repetition:</strong></td>
+                    <td>
+                        <select id="repetition" required name="repetition">
+                            <option value=1 {% if note.schedule.repetition == 1 %} selected {% endif %}>Every day</option>
+                            <option value=7 {% if note.schedule.repetition == 7 %} selected {% endif %}>Every 7 days</option>
+                            <option value=30 {% if note.schedule.repetition == 30 %} selected {% endif %}>Every 30 days</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>from date:</strong></td>
+                    <td><input id="from_date" type="date" required name="from_date" value="{{ note.schedule.from_date | date:'Y-m-d'}}"></td>
+                </tr>
+                <tr>
+                    <td><strong>to date:</strong></td>
+                    <td><input id="to_date" type="date" required name="to_date" value="{{ note.schedule.to_date | date:'Y-m-d'}}"></td>
+                </tr>
+                <tr>
+                    <td><strong>location name:</strong></td>
+                    <td><input id="lname" type="text" required name="lname" value="{{ note.location.lname }}"></td>
+                </tr>
+                <tr>
+                    <td><strong>lat:</strong></td>
+                    <td><input id="lat" type="number" step=any min="-180" max="180" required name="lat" value="{{ note.location.lat }}"></td>
+                </tr>
+                <tr>
+                    <td><strong>lon:</strong></td>
+                    <td><input id="lon" type="number" step=any min="-180" max="180" required name="lon" value="{{ note.location.lon }}"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#google_maps_api" value="Click to set coordinates.">
+                        </input>
+
+                        <div class="modal fade" id="google_maps_api" tabindex="-1" role="dialog"
+                             aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close"data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="myModalLabel">select locations</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div id="map_canvas" style="width: 100%; height: 450px"></div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">OK</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                    
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>visiable radius(km):</strong></td>
+                    <td><input id="visiable_radius" type="number" min="0" step=any required name="visiable_radius" value="{{note.visiable_radius}}"></td>
+                </tr>
+                <tr>
+                    <td><strong>visiable group:</strong></td>
+                    <td>
+                        <select id="visiable_group" required name="visiable_group">
+                            <option value=0 {% if note.visiable_group == 0 %} selected {% endif %}>self only</option>
+                            <option value=1 {% if note.visiable_group == 1 %} selected {% endif %}>friends only</option>
+                            <option value=2 {% if note.visiable_group == 2 %} selected {% endif %}>everyone</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>allow comment:</strong></td>
+                    <td><input type="checkbox" name="allow_comment" value="allow" {% if note.allow_comment %}checked{% endif %}></td>
+                </tr>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <button id="submit" class="btn btn-default btn-block" type="submit" name="save">
+                    save
+                </button>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-default btn-block" type="button" onclick="javascript:history.back(-1)">
+                    back
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+</div>  
+{% endblock %}

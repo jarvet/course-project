@@ -109,13 +109,29 @@
                 </div>
                 <div class="row">
                     {% if note.allow_comment == True%}
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <button class="btn btn-default btn-block" type="submit">
                             comment
                         </button>
                     </div>
                     {% endif %}
-                    <div class="col-md-4">
+                    {% if note.author.id == userid%}
+                    <div class="col-md-3">
+                        <a href="{% url 'oingo:edit_note' note.id %}">
+                            <button class="btn btn-default btn-block" type="button" >
+                                edit
+                            </button>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="{% url 'oingo:remove_note' note.id %}">
+                            <button class="btn btn-default btn-block" type="button" >
+                                remove
+                            </button>
+                        </a>
+                    </div>
+                    {% endif %}
+                    <div class="col-md-3">
                         <a href="{% url 'oingo:index' %}">
                         <button class="btn btn-default btn-block" type="button" >
                             back
