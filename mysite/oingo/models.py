@@ -61,6 +61,7 @@ class Note(models.Model):
 
 class Filter(models.Model):
     user = models.ForeignKey(User, related_name="filters", on_delete=models.CASCADE)
+    fname = models.CharField(max_length=50)
     start_time = models.TimeField(blank=True, null=True)
     end_time = models.TimeField(blank=True, null=True)
     repetition = models.IntegerField(blank=True, null=True)
@@ -73,7 +74,8 @@ class Filter(models.Model):
     state = models.CharField(max_length=50, blank=True)
     tag = models.ForeignKey(Tag, related_name="filters", on_delete=models.CASCADE, blank=True, null=True)
 
-
+    def __str__(self):
+        return self.fname
 
 class Area(models.Model):
     aname = models.CharField(max_length=50)

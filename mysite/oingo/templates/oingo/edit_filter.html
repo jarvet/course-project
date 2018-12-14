@@ -12,6 +12,10 @@
                 <div class="row">
                     <table>
                         <tr>
+                            <td><strong>filter name:</strong></td>
+                            <td><input id="fname" type="text" name="fname" required value="{{ filter.name }}"></td>
+                        </tr>
+                        <tr>
                             <td><strong>start time:</strong></td>
                             <td><input id="start_time" type="time" name="start_time" value="{{ filter.start_time | time:'H:i' }}"></td>
                         </tr>

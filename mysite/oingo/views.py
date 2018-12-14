@@ -346,12 +346,17 @@ def index(request):
         result_notes = matching_notes
     else:
         result_notes = matching_notes.filter(tags__tname__in=tnames)
-
     content = {
         'username': username,
         'userid': userid,
         'notes': result_notes
     }
+
+    post = request.POST
+    if post:
+        keyword = post.get('keyword', '')
+        search_notes = Note.objects.filter(note_content__icontains=keyword)
+        content['notes'] = search_notes.intersection(result_notes)
     return render(request, 'oingo/index.html', content)
 
 
@@ -409,7 +414,7 @@ def edit_filter(request, filter_id):
                 tag.save()
         else:
             tag = None
-
+        filter.fname = post.get('fname')
         filter.start_time = _get_empty_to_none(post.get('start_time', ''))
         filter.end_time = _get_empty_to_none(post.get('end_time', ''))
         filter.repetition = _get_empty_to_none(post.get('repetition', ''))
@@ -461,6 +466,7 @@ def create_filter(request):
 
         new_filter = Filter(
             user=user,
+            fname=post.get('fname'),
             start_time=_get_empty_to_none(post.get('start_time', '')),
             end_time=_get_empty_to_none(post.get('end_time', '')),
             repetition=_get_empty_to_none(post.get('repetition', '')),

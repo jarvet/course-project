@@ -8,10 +8,20 @@
                 <h3 class="text-left text-primary"><strong>Notes:</strong></h3>
             </div>
                     {% if notes %}
-                        {% for note in notes %}
 
-                        <form role="form" method="method" action="{% url 'oingo:add_comment' note.id %}">
-                            {% csrf_token %}
+                    <form class="navbar-form navbar-left" role="form" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="keyword">
+                            <button class="btn btn-default" type="submit" name="search">
+                                search content
+                            </button>
+                        </div>
+                    </form>
+
+                        {% for note in notes %}
+                        <!--<form role="form" method="method" action="{% url 'oingo:add_comment' note.id %}">-->
+                            <!--{% csrf_token %}-->
                             <row class="rows">     
                                 <table class="table table-bordered">
                                     <tr>
@@ -51,7 +61,7 @@
                                 </table>
                             </row>
 
-                        </form>
+                        <!--</form>-->
                         {% endfor %}
                     {% else %}
                         <div class="row">

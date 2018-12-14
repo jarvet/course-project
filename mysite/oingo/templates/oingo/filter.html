@@ -14,6 +14,10 @@
                     {% if filters %}
                         {% for f in filters %}
                             <table>
+                                <tr>
+                                    <td><strong>filter name:</strong></td>
+                                    <td>{{f.fname}}</td>
+                                </tr>
                                 {% if f.start_time %}
                                 <tr>
                                     <td><strong>start time:</strong></td>
