@@ -17,7 +17,7 @@ var googleMap = {
         if (this.map) return null;
 
         var myOptions = {
-            zoom: 3,//放大的倍数
+            zoom: 17,//放大的倍数
             center: new google.maps.LatLng(40.6942, -73.9866),//初始化时地图的中心
             mapTypeControl: true,
             mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
